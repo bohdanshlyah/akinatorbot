@@ -31,7 +31,7 @@ async def start_game(message: types.Message):
     await message.answer("Game started!", reply_markup=keyboard)
 
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    buttons = ['Yes', 'No', 'I don\'t know', 'Probably', 'Probably not']
+    buttons = ['Yes', 'No', 'I don\'t know', 'Probably', 'Probably not', 'Go Back!']
     keyboard.add(*buttons)
     await message.answer("First question", reply_markup=keyboard)
 

@@ -20,9 +20,20 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
+    keyboard = types.ReplyKeyboardMarkup()
+    button_1 = types.KeyboardButton(text="Start Game")
+    keyboard.add(button_1)
+    await message.reply("Hi!\nI'm AkinatorBot!", reply_markup=keyboard)
 
-    await message.reply("Hi!\nI'm AkinatorBot!")
+@dp.message_handler(text=("Start Game"))
+async def start_game(message: types.Message):
+    keyboard = types.ReplyKeyboardRemove()
+    await message.answer("Game started!", reply_markup=keyboard)
 
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    buttons = ['Yes', 'No', 'I don\'t know', 'Probably', 'Probably not']
+    keyboard.add(*buttons)
+    await message.answer("First question", reply_markup=keyboard)
 
 @dp.message_handler()
 async def echo(message: types.Message):

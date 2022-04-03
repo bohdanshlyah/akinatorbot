@@ -8,6 +8,6 @@
 
 You can start this bot by running command:
 
-*/start*
+    /start
 
 After that start game by typing buttons, answer the questions and enjoy the game =)

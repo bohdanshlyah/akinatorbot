@@ -34,6 +34,7 @@ async def change_langeage(message: types.Message):
     keyboard = types.ReplyKeyboardRemove()
     await message.answer("Language changed!", reply_markup=keyboard)
     await aki.close()
+
     time.sleep(1)
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     button_1 = types.KeyboardButton(text="Restart Game")
@@ -97,8 +98,8 @@ async def start_game(message: types.Message):
     try:
         q = await aki.start_game(language=language)
     except:
-        print("ERROR!!!!")
-        await aki.close()
+        if aki.client_session.closed is False:
+            await aki.close()
         time.sleep(1)
         q = await aki.start_game(language=language)
     await message.answer(q)

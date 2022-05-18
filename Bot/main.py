@@ -1,3 +1,4 @@
+import os
 import akinator
 import logging
 import time
@@ -5,8 +6,9 @@ import time
 
 from aiogram import Bot, Dispatcher, executor, types
 from akinator.async_aki import Akinator
-from config import TOKEN
-API_TOKEN = TOKEN
+from dotenv import load_dotenv
+load_dotenv()
+API_TOKEN = os.getenv("TOKEN")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
